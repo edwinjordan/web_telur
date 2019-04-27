@@ -5,7 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-class Dashboard extends MX_Controller {
+class Dashboard extends MY_Admin {
     
     function __construct() {
         parent::__construct();
@@ -15,6 +15,6 @@ class Dashboard extends MX_Controller {
         $data['judul']        = "Home";
         $data['module']       = "Dashboard";
         $data['view_file']    = "view_dashboard";
-        echo Modules::run('Template/view_admin', $data);
+        $this->load->view('Template/view_admin', $data);
     }
 }

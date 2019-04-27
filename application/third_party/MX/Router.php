@@ -243,5 +243,5 @@ class MX_Router extends CI_Router
 	    }
 
 	    parent::set_class($class);
-	}
+	} 
 }	
