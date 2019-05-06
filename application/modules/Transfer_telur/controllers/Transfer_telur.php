@@ -20,4 +20,17 @@ class Transfer_telur extends MY_Admin {
         $data['view_file']    = "transaksi_telur";
        $this->load->view('Template/view_admin', $data);
     }
+
+    function kandang_besar(){
+     
+        $data['module']       = "Transfer_telur";
+        $data['view_file']    = "transfer_kandang_besar";
+       $this->load->view('Template/view_admin', $data);
+    }
+
+    function detail_kandang_besar(){
+    	$data['module']       = "Transfer_telur";
+        $data['view_file']    = "detail_kandang_besar";
+        $this->load->view('Template/view_admin', $data);
+    }
  }   
