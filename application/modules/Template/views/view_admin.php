@@ -5,44 +5,33 @@
     <meta charset="utf-8" />
     <title>Admin Elecomp</title>
 
-    <meta name="description" content="top menu &amp; navigation" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    <link rel="shortcut icon" href="<?php echo base_url();?>assets/img/favicon-elecomp.png" type="image/x-icon" />
+    <?php
+    // Page Title
+    if(isset($theme['assets']['header']['title']))
+      echo $this->template->get_title() . "\n";
 
-    <!-- bootstrap & fontawesome -->
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/font-awesome.css" />
+    // Meta Tags
+    if(isset($theme['assets']['header']['meta'])) {
+      foreach($this->template->get_meta() as $meta_tag) {
+        echo $meta_tag . "\n";
+      }
+    }
 
-    <!-- page specific plugin styles -->
+    // Custom CSS Files
+    if(isset($theme['assets']['header']['css'])) {
+      foreach($this->template->get_css() as $css_file) {
+        echo $css_file . "\n";
+      }
+    }
 
-    <!-- text fonts -->
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/ace-fonts.css" />
+    // Custom JS Files
+    if(isset($theme['assets']['header']['js'])) {
+      foreach($this->template->get_js('header') as $js_file) {
+        echo $js_file . "\n";
+      }
+    }
+  ?>  
 
-    <!-- ace styles -->
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
-    <link href="<?= base_url(); ?>assets/plugins/sweetalert/sweetalert.css" rel="stylesheet">
-        <link href="<?= base_url(); ?>assets/plugins/select2/select2.min.css" rel="stylesheet">
-    <!--[if lte IE 9]>
-      <link rel="stylesheet" href="../assets/css/ace-part2.css" class="ace-main-stylesheet" />
-    <![endif]-->
-
-    <!--[if lte IE 9]>
-      <link rel="stylesheet" href="../assets/css/ace-ie.css" />
-    <![endif]-->
-
-    <!-- inline styles related to this page -->
-
-    <!-- ace settings handler -->
-    <script src="<?php echo base_url();?>assets/js/ace-extra.js"></script>
-    <script src="<?= base_url(); ?>assets/jquery/jquery-2.1.4.min.js"></script>
-
-    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
-
-    <!--[if lte IE 8]>
-    <script src="../assets/js/html5shiv.js"></script>
-    <script src="../assets/js/respond.js"></script>
-    <![endif]-->
-    
   </head>
 <script type="text/javascript">
 var table;
@@ -89,10 +78,10 @@ function undelete_data(table,id) {
     }
   });
 }
+
+BASE_URL = '<?php echo base_url();?>';
 </script>
-<!-- <body class="hold-transition skin-blue sidebar-mini fixed"> -->
 <body class="no-skin">
-    <!-- #section:basics/navbar.layout -->
     <div id="navbar" class="navbar navbar-default    navbar-collapse       h-navbar">
       <script type="text/javascript">
         try{ace.settings.check('navbar' , 'fixed')}catch(e){}
@@ -100,16 +89,11 @@ function undelete_data(table,id) {
 
       <div class="navbar-container" id="navbar-container">
         <div class="navbar-header pull-left">
-          <!-- #section:basics/navbar.layout.brand -->
           <a href="#" class="navbar-brand">
             <small>
               Admin Web Elecomp
             </small>
           </a>
-
-          <!-- /section:basics/navbar.layout.brand -->
-
-          <!-- #section:basics/navbar.toggle -->
           <button class="pull-right navbar-toggle navbar-toggle-img collapsed" type="button" data-toggle="collapse" data-target=".navbar-buttons,.navbar-menu">
             <span class="sr-only">Toggle user menu</span>
 
@@ -126,13 +110,9 @@ function undelete_data(table,id) {
             <span class="icon-bar"></span>
           </button>
 
-          <!-- /section:basics/navbar.toggle -->
         </div>
-
-        <!-- #section:basics/navbar.dropdown -->
         <div class="navbar-buttons navbar-header pull-right  collapse navbar-collapse" role="navigation">
           <ul class="nav ace-nav">
-            <!-- #section:basics/navbar.user_menu -->
             <li class="light-blue user-min">
               <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                 <img class="nav-user-photo" src="<?php echo base_url();?>assets/avatars/avatar2.png" alt="Jason's Photo" />
@@ -170,31 +150,27 @@ function undelete_data(table,id) {
               </ul>
             </li>
 
-            <!-- /section:basics/navbar.user_menu -->
           </ul>
         </div>
 
-        <!-- /section:basics/navbar.dropdown -->
         <nav role="navigation" class="navbar-menu pull-left collapse navbar-collapse">
-          <!-- #section:basics/navbar.nav -->
+      
           <ul class="nav navbar-nav">
           
           </ul>
 
-         
 
-          <!-- /section:basics/navbar.form -->
         </nav>
-      </div><!-- /.navbar-container -->
+      </div>
     </div>
 
-    <!-- /section:basics/navbar.layout -->
+ 
     <div class="main-container" id="main-container">
       <script type="text/javascript">
         try{ace.settings.check('main-container' , 'fixed')}catch(e){}
       </script>
 
-      <!-- #section:basics/sidebar.horizontal -->
+
       <div id="sidebar" class="sidebar      h-sidebar                navbar-collapse collapse">
         <script type="text/javascript">
           try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
@@ -210,7 +186,7 @@ function undelete_data(table,id) {
               <i class="ace-icon fa fa-pencil"></i>
             </button>
 
-            <!-- #section:basics/sidebar.layout.shortcuts -->
+
             <button class="btn btn-warning">
               <i class="ace-icon fa fa-users"></i>
             </button>
@@ -219,7 +195,6 @@ function undelete_data(table,id) {
               <i class="ace-icon fa fa-cogs"></i>
             </button>
 
-            <!-- /section:basics/sidebar.layout.shortcuts -->
           </div>
 
           <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
@@ -231,23 +206,19 @@ function undelete_data(table,id) {
 
             <span class="btn btn-danger"></span>
           </div>
-        </div><!-- /.sidebar-shortcuts -->
+        </div>
 
-        <?php $this->load->view('Template/view_menu');?>
+         <?php $this->load->view('Template/view_menu');?> 
 
-        <!-- #section:basics/sidebar.layout.minimize -->
-
-        <!-- /section:basics/sidebar.layout.minimize -->
         <script type="text/javascript">
           try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
         </script>
       </div>
 
-      <!-- /section:basics/sidebar.horizontal -->
+
       <div class="main-content">
         <div class="main-content-inner">
           <div class="page-content">
-            <!-- #section:settings.box -->
             <div class="ace-settings-container" id="ace-settings-container">
               <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
                 <i class="ace-icon fa fa-cog bigger-130"></i>
@@ -255,7 +226,6 @@ function undelete_data(table,id) {
 
               <div class="ace-settings-box clearfix" id="ace-settings-box">
                 <div class="pull-left width-50">
-                  <!-- #section:settings.skins -->
                   <div class="ace-settings-item">
                     <div class="pull-left">
                       <select id="skin-colorpicker" class="hide">
@@ -267,42 +237,22 @@ function undelete_data(table,id) {
                     </div>
                     <span>&nbsp; Choose Skin</span>
                   </div>
-
-                  <!-- /section:settings.skins -->
-
-                  <!-- #section:settings.navbar -->
                   <div class="ace-settings-item">
                     <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-navbar" />
                     <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
                   </div>
-
-                  <!-- /section:settings.navbar -->
-
-                  <!-- #section:settings.sidebar -->
                   <div class="ace-settings-item">
                     <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-sidebar" />
                     <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
                   </div>
-
-                  <!-- /section:settings.sidebar -->
-
-                  <!-- #section:settings.breadcrumbs -->
                   <div class="ace-settings-item">
                     <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-breadcrumbs" />
                     <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
                   </div>
-
-                  <!-- /section:settings.breadcrumbs -->
-
-                  <!-- #section:settings.rtl -->
                   <div class="ace-settings-item">
                     <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" />
                     <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
                   </div>
-
-                  <!-- /section:settings.rtl -->
-
-                  <!-- #section:settings.container -->
                   <div class="ace-settings-item">
                     <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-add-container" />
                     <label class="lbl" for="ace-settings-add-container">
@@ -311,11 +261,9 @@ function undelete_data(table,id) {
                     </label>
                   </div>
 
-                  <!-- /section:settings.container -->
-                </div><!-- /.pull-left -->
+                </div>
 
                 <div class="pull-left width-50">
-                  <!-- #section:basics/sidebar.options -->
                   <div class="ace-settings-item">
                     <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" />
                     <label class="lbl" for="ace-settings-hover"> Submenu on Hover</label>
@@ -331,16 +279,13 @@ function undelete_data(table,id) {
                     <label class="lbl" for="ace-settings-highlight"> Alt. Active Item</label>
                   </div>
 
-                  <!-- /section:basics/sidebar.options -->
-                </div><!-- /.pull-left -->
-              </div><!-- /.ace-settings-box -->
-            </div><!-- /.ace-settings-container -->
+                </div>
+              </div>
+            </div>
 
-            <!-- /section:settings.box -->
 
             <div class="row">
               <div class="col-xs-12">
-                <!-- PAGE CONTENT BEGINS -->
                 <div class="alert alert-info visible-sm visible-xs">
                   <button type="button" class="close" data-dismiss="alert">
                     <i class="ace-icon fa fa-times"></i>
@@ -360,14 +305,34 @@ function undelete_data(table,id) {
                   or
                   <em>minimized</em>.
                 </div>
+              
+
                 <?php
                    $this->load->view($module.'/'.$view_file);
                 ?>
 
-                <!-- PAGE CONTENT ENDS -->
-              </div><!-- /.col -->
-            </div><!-- /.row -->
-          </div><!-- /.page-content -->
+              </div>
+            </div>
+          </div>
         </div>
-      </div><!-- /.main-content --><br />
-<?php $this->load->view('Template/vfooter'); ?>  
+      </div>
+  <?php  
+      if(isset($parts['footer'])) {
+            echo $parts['footer'];
+        }   
+  ?>
+  
+
+
+
+
+    <?php
+        if(isset($theme['assets']['footer']['js'])) {
+            foreach($this->template->get_js('footer') as $js_file) {
+                echo $js_file . "\n";
+            }
+        }
+
+    ?>        
+</body>
+</html> 

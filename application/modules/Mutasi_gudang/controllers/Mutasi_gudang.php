@@ -1,5 +1,3 @@
-
-
 <?php (defined('BASEPATH')) OR exit('No direct script access allowed');
 
 /* 
@@ -7,7 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-class Dashboard extends MY_Admin {
+class Mutasi_gudang extends MY_Admin {
     
     function __construct() {
         parent::__construct();
@@ -18,8 +16,8 @@ class Dashboard extends MY_Admin {
         
 
         
-        $data['module']       = "Dashboard";
-        $data['view_file']    = "view_dashboard";
+        $data['module']       = "Mutasi_gudang";
+        $data['view_file']    = "input_mutasi";
        $this->load->view('Template/view_admin', $data);
     }
 }
